@@ -9,13 +9,13 @@ export const Curve = (props) => {
                 overflow: "hidden",
                 height: props.height,
                 transform: `scaleX(${props.flipX ? -1 : 1}) rotate(${props.flipY ? "180deg" : 0})`
-            }}>
-        <svg
-            preserveAscpectRatio="none"
-            style={{ position: "absolute", top: 0, left: 0, height: props.height, width: `${props.width}px` }}
-            viewBox="0 0 1200 120"
-        >
-            <path style={{fill:'white'}} d={props.flipY ? invertedPath : normalPath} />
+        }}>
+            <svg
+                preserveAspectRatio="none"
+                style={{ position: "absolute", top: 0, left: 0, height: props.height, width: `${props.width}%` }}
+                viewBox="0 0 1200 120"
+            >
+            <path style={{fill: props.color || "white"}} d={props.flipY ? invertedPath : normalPath} />
         </svg>
     </div>;
 }

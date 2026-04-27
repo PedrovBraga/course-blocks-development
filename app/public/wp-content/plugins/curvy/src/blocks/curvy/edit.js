@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls, ColorPalette } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl, HorizontalRule, RangeControl } from "@wordpress/components";
 
 /**
@@ -43,6 +43,7 @@ export default function Edit(props) {
 				<section className={`${className} alignfull`} { ...blockProps }>
 					{props.attributes.enableTopCurve && 
 						<Curve 
+							color={props.attributes.topColor} 
 							height={props.attributes.topHeight} 
 							width={props.attributes.topWidth}
 							flipX={props.attributes.topFlipX}
@@ -97,6 +98,14 @@ export default function Edit(props) {
 										checked={ props.attributes.topFlipY } 
 									/>
 									<span style={{marginLeft: "8px"}}>{__("Flip vertically", metadata.textdomain)}</span>
+								</div>
+								<HorizontalRule />
+								<div style={{display: "flex"}}>
+									<label style={{marginLeft: "8px"}}>{__("Curve Color", metadata.textdomain)}</label>
+									<ColorPalette 
+										value={props.attributes.topColor} 
+										onChange={(newColor) => props.setAttributes({ topColor: newColor })} 
+									/>
 								</div>
 							</>
 						}

@@ -43,12 +43,24 @@ return array(
 				'default' => true
 			),
 			'topWidth' => array(
-				'typwe' => 'number',
+				'type' => 'number',
 				'default' => 100
 			),
 			'topHeight' => array(
-				'typwe' => 'number',
+				'type' => 'number',
 				'default' => 100
+			),
+			'topFlipX' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'topFlipY' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'topColor' => array(
+				'type' => 'string',
+				'default' => '#FFFFFF'
 			)
 		),
 		'textdomain' => 'blockylicious',

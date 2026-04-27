@@ -47,13 +47,17 @@
 			"type": "number",
 			"default": 100
 		},
-		"TopFlipX": {
+		"topFlipX": {
 			"type": "boolean",
 			"default": false
 		},
-		"TopFlipy": {
+		"topFlipY": {
 			"type": "boolean",
 			"default": false
+		},
+		"topColor": {
+			"type": "string",
+			"default": "#FFFFFF"
 		}
 	},
 	"textdomain": "blockylicious",
