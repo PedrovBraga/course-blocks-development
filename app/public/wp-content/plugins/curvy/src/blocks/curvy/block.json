@@ -40,12 +40,20 @@
 			"default": true
 		},
 		"topWidth": {
-			"typwe": "number",
+			"type": "number",
 			"default": 100
 		},
 		"topHeight": {
-			"typwe": "number",
+			"type": "number",
 			"default": 100
+		},
+		"TopFlipX": {
+			"type": "boolean",
+			"default": false
+		},
+		"TopFlipy": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"textdomain": "blockylicious",
