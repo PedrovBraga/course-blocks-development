@@ -11,8 +11,8 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InspectorControls, ColorPalette } from '@wordpress/block-editor';
-import { PanelBody, ToggleControl, HorizontalRule, RangeControl } from "@wordpress/components";
+import { useBlockProps, InspectorControls, InnerBlocks } from '@wordpress/block-editor';
+import { PanelBody, ToggleControl } from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -33,6 +33,8 @@ import './editor.scss';
 
 import metadata from './block.json';
 import { Curve } from './components/curve';
+import { TopCurveSettings } from './components/topCurveSettings';
+import { BottomCurveSettings } from './components/bottomCurveSettings';
 
 export default function Edit(props) {
 	// console.log({ ...props.attributes });
@@ -50,6 +52,17 @@ export default function Edit(props) {
 							flipY={props.attributes.topFlipY}
 							/>
 					}
+					<InnerBlocks />
+					{props.attributes.enableBottomCurve && 
+						<Curve 
+							isBottom
+							color={props.attributes.bottomColor} 
+							height={props.attributes.bottomHeight} 
+							width={props.attributes.bottomWidth}
+							flipX={props.attributes.bottomFlipX}
+							flipY={props.attributes.bottomFlipY}
+							/>
+					}
 				</section>
 				<InspectorControls >
 					<PanelBody title={ __( 'Top Curve', metadata.textdomain ) }>
@@ -62,52 +75,20 @@ export default function Edit(props) {
 							<span style={{marginLeft: "8px"}}>{__("Enable top curve", metadata.textdomain)}</span>
 						</div>
 						{props.attributes.enableTopCurve && 
-							<>
-								<HorizontalRule />
-								<RangeControl 
-									min={100}
-									max={300}
-									value={props.attributes.topWidth || 100}
-									onChange={(newValue) => {
-										props.setAttributes({ topWidth: parseInt(newValue) });
-									}}
-									label={__("Width", metadata.textdomain)} 
-								/>
-								<RangeControl 
-									min={0}
-									max={200}
-									value={props.attributes.topHeight || 100}
-									onChange={(newValue) => {
-										props.setAttributes({ topHeight: parseInt(newValue) });
-									}}
-									label={__("Height", metadata.textdomain)} 
-								/>
-								<HorizontalRule />
-								<div style={{display: "flex"}}>
-									<ToggleControl onChange={
-											(isChecked) => props.setAttributes({ topFlipX: isChecked })
-										}
-										checked={ props.attributes.topFlipX } 
-									/>
-									<span style={{marginLeft: "8px"}}>{__("Flip horizontally", metadata.textdomain)}</span>
-								</div>
-								<div style={{display: "flex"}}>
-									<ToggleControl onChange={
-											(isChecked) => props.setAttributes({ topFlipY: isChecked })
-										}
-										checked={ props.attributes.topFlipY } 
-									/>
-									<span style={{marginLeft: "8px"}}>{__("Flip vertically", metadata.textdomain)}</span>
-								</div>
-								<HorizontalRule />
-								<div style={{display: "flex"}}>
-									<label style={{marginLeft: "8px"}}>{__("Curve Color", metadata.textdomain)}</label>
-									<ColorPalette 
-										value={props.attributes.topColor} 
-										onChange={(newColor) => props.setAttributes({ topColor: newColor })} 
-									/>
-								</div>
-							</>
+							<TopCurveSettings attributes={props.attributes} setAttributes={props.setAttributes} />
+						}
+					</PanelBody>
+					<PanelBody title={ __( 'Bottom Curve', metadata.textdomain ) }>
+						<div style={{display: "flex"}}>
+							<ToggleControl onChange={
+								(isChecked) => props.setAttributes({ enableBottomCurve: isChecked })
+							}
+							checked={ props.attributes.enableBottomCurve } 
+							/>
+							<span style={{marginLeft: "8px"}}>{__("Enable bottom curve", metadata.textdomain)}</span>
+						</div>
+						{props.attributes.enableBottomCurve && 
+							<BottomCurveSettings attributes={props.attributes} setAttributes={props.setAttributes} />
 						}
 					</PanelBody>
 				</InspectorControls>

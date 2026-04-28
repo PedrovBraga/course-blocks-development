@@ -61,12 +61,37 @@ return array(
 			'topColor' => array(
 				'type' => 'string',
 				'default' => '#FFFFFF'
+			),
+			'enableBottomCurve' => array(
+				'type' => 'boolean',
+				'default' => true
+			),
+			'bottomWidth' => array(
+				'type' => 'number',
+				'default' => 100
+			),
+			'bottomHeight' => array(
+				'type' => 'number',
+				'default' => 100
+			),
+			'bottomFlipX' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'bottomFlipY' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'bottomColor' => array(
+				'type' => 'string',
+				'default' => '#FFFFFF'
 			)
 		),
 		'textdomain' => 'blockylicious',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
-		'viewScript' => 'file:./view.js'
+		'viewScript' => 'file:./view.js',
+		'render' => 'file:./render.php'
 	)
 );
