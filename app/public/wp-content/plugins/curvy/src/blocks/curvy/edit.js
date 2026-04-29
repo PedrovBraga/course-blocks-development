@@ -52,7 +52,9 @@ export default function Edit(props) {
 							flipY={props.attributes.topFlipY}
 							/>
 					}
-					<InnerBlocks />
+					<div className="curvy-content">
+						<InnerBlocks />
+					</div>
 					{props.attributes.enableBottomCurve && 
 						<Curve 
 							isBottom

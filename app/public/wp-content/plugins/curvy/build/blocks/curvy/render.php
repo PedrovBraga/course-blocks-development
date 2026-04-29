@@ -29,7 +29,7 @@
             <path d="<?php echo $topFlipY ? $invertedPath : $normalPath; ?>" fill="<?php echo $attributes['topColor'] ?? "white" ?>"></path>
         </svg>
     </div>
-    <?php echo $content; ?>
+    <div class="curvy-content"><?php echo $content; ?></div>
     <div class="curve bottom-curve" style="display: <?php echo $attributes['enableBottomCurve'] ?? false ? 'block' : 'none'; ?>; transform: <?php echo $bottomTransform; ?>; height: <?php echo $attributes['bottomHeight'] ?>px">
         <svg
             style="height: <?php echo $attributes['bottomHeight'] ?>px; width: <?php echo $attributes['bottomWidth'] ?>%"

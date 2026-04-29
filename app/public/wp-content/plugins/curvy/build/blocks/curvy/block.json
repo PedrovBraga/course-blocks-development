@@ -4,7 +4,7 @@
   "name": "blockylicious/curvy",
   "version": "0.1.0",
   "title": "Curvy",
-  "category": "widgets",
+  "category": "blockylicious",
   "icon": "smiley",
   "description": "Example block curvy shape to make dividing page content.",
   "supports": {
@@ -16,6 +16,67 @@
     },
     "spacing": {
       "padding": true
+    }
+  },
+  "variations": [
+    {
+      "name": "top-only",
+      "title": "Top Curve Only",
+      "attributes": {
+        "enableBottomCurve": false,
+        "enableTopCurve": true
+      }
+    },
+    {
+      "name": "bottom-only",
+      "title": "Bottom Curve Only",
+      "attributes": {
+        "enableBottomCurve": true,
+        "enableTopCurve": false
+      }
+    }
+  ],
+  "example": {
+    "innerBlocks": [
+      {
+        "name": "core/heading",
+        "attributes": {
+          "content": "Example Curvy Block"
+        }
+      },
+      {
+        "name": "core/paragraph",
+        "attributes": {
+          "content": "This is a curvy block. You can add any content here and it will be wrapped with the curvy design."
+        }
+      }
+    ],
+    "attributes": {
+      "style": {
+        "color": {
+          "background": "#ec4899"
+        },
+        "spacing": {
+          "padding": {
+            "top": "50px",
+            "right": "50px",
+            "bottom": "50px",
+            "left": "50px"
+          }
+        }
+      },
+      "enableTopCurve": true,
+      "topWidth": 100,
+      "topHeight": 100,
+      "topFlipX": false,
+      "topFlipY": false,
+      "topColor": "#FFFFFF",
+      "enableBottomCurve": true,
+      "bottomWidth": 100,
+      "bottomHeight": 100,
+      "bottomFlipX": false,
+      "bottomFlipY": false,
+      "bottomColor": "#FFFFFF"
     }
   },
   "attributes": {
