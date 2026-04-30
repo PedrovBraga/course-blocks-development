@@ -1,1 +1,0 @@
-{"version":3,"file":"blocks/clickyButton/index.css","mappings":";;;AAAA;EACI;EACA;AACJ,C","sources":["webpack://curvy/./src/blocks/clickyButton/editor.scss"],"sourcesContent":[".wp-block-blockylicious-clicky-group {\r\n    border: 2px solid red;\r\n    padding: 20px;\r\n}"],"names":[],"sourceRoot":""}

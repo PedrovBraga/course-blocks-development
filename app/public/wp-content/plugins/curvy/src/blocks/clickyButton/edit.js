@@ -1,6 +1,7 @@
 
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, InspectorControls, InnerBlocks } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls, InnerBlocks, RichText } from '@wordpress/block-editor';
+import { useSelect } from '@wordpress/data';
 // import { PanelBody, ToggleControl } from "@wordpress/components";
 import './editor.scss';
 
@@ -11,8 +12,27 @@ import './editor.scss';
 
 export default function Edit(props) {
 	// console.log({ ...props.attributes });
+	const postTypes = useSelect((select) => {
+		const data = select("core").getEntityRecords("root", "postType", {
+			per_page: -1,
+		});
+		return data?.filter(
+			(item) => item.visibility.show_in_nav_menus && item.visibility.show_ui
+		);
+	});
+	console.log({postTypes});
 	const blockProps = useBlockProps();
 	return (
-			<div { ...blockProps }>click button</div>
+			<div { ...blockProps }>
+				<RichText
+					placeholder='Label'
+					value={ props.attributes.labelText }
+					allowedFormats={[]}
+					multiline={ false }
+					onSplit={() => {}}
+					onReplace={() => {}}
+					onChange={ ( value ) => props.setAttributes( { labelText: value } ) }
+				/>
+			</div>
 	);
 }

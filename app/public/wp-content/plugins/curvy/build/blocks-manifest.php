@@ -11,7 +11,40 @@ return array(
 		'icon' => 'smiley',
 		'description' => 'Example block for creating a clickable element.',
 		'supports' => array(
-			'html' => false
+			'html' => false,
+			'color' => array(
+				'background' => true,
+				'text' => true,
+				'link' => false,
+				'gradients' => true,
+				'enableContrastChecker' => true
+			),
+			'spacing' => array(
+				'padding' => true
+			)
+		),
+		'attributes' => array(
+			'labelText' => array(
+				'type' => 'string',
+				'default' => 'click'
+			),
+			'style' => array(
+				'type' => 'object',
+				'default' => array(
+					'color' => array(
+						'background' => '#000000',
+						'text' => '#ffffff'
+					),
+					'spacing' => array(
+						'padding' => array(
+							'top' => '15px',
+							'right' => '15px',
+							'bottom' => '15px',
+							'left' => '15px'
+						)
+					)
+				)
+			)
 		),
 		'textdomain' => 'blockylicious',
 		'editorScript' => 'file:./index.js',
@@ -32,7 +65,21 @@ return array(
 		'icon' => 'smiley',
 		'description' => 'Example block for creating a group of clickable elements.',
 		'supports' => array(
-			'html' => false
+			'html' => false,
+			'spacing' => array(
+				'blockGap' => true
+			)
+		),
+		'attributes' => array(
+			'justifyContent' => array(
+				'type' => 'string',
+				'enum' => array(
+					'left',
+					'center',
+					'right'
+				),
+				'default' => 'left'
+			)
 		),
 		'textdomain' => 'blockylicious',
 		'editorScript' => 'file:./index.js',

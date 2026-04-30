@@ -6,7 +6,7 @@ import './style.scss';
 import edit from './edit';
 import save from './save';
 import metadata from './block.json';
-// import icon from './assets/icon.svg';
+import icon from './assets/clicky.svg';
 
 registerBlockType( metadata.name, {
 	/**
@@ -17,5 +17,6 @@ registerBlockType( metadata.name, {
 	/**
 	 * @see ./save.js
 	 */
-	save,	
+	save,
+	icon: <img src={icon} alt="Clicky Button Icon" />	
 } );

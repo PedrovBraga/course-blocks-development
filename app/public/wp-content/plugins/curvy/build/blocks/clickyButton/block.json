@@ -8,7 +8,40 @@
   "icon": "smiley",
   "description": "Example block for creating a clickable element.",
   "supports": {
-    "html": false
+    "html": false,
+    "color": {
+      "background": true,
+      "text": true,
+      "link": false,
+      "gradients": true,
+      "enableContrastChecker": true
+    },
+    "spacing": {
+      "padding": true
+    }
+  },
+  "attributes": {
+    "labelText": {
+      "type": "string",
+      "default": "click"
+    },
+    "style": {
+      "type": "object",
+      "default": {
+        "color": {
+          "background": "#000000",
+          "text": "#ffffff"
+        },
+        "spacing": {
+          "padding": {
+            "top": "15px",
+            "right": "15px",
+            "bottom": "15px",
+            "left": "15px"
+          }
+        }
+      }
+    }
   },
   "textdomain": "blockylicious",
   "editorScript": "file:./index.js",
