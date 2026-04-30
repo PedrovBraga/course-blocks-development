@@ -17,7 +17,5 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
  */
 export default function save() {
 
-	return <div>
-		click group save
-	</div>;
+	return null;
 }

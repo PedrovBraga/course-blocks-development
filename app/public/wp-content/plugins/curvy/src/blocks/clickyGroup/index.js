@@ -8,15 +8,17 @@ import save from './save';
 import metadata from './block.json';
 import icon from './assets/clickyGroup.svg';
 
-registerBlockType( metadata.name, {
-	/**
-	 * @see ./edit.js
-	 */
-	edit,
+const deprecated = [
+	{
+		save() {
+			return <div>click group save</div>;
+		}
+	}
+];
 
-	/**
-	 * @see ./save.js
-	 */
+registerBlockType( metadata.name, {
+	edit,
 	save,
-	icon: <img src={icon} alt="Clicky Group Icon" />	
+	deprecated,
+	icon: <img src={icon} alt="Clicky Group Icon" />
 } );

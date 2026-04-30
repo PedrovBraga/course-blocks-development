@@ -165,15 +165,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const deprecated = [{
+  save() {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      children: "click group save"
+    });
+  }
+}];
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_4__.name, {
-  /**
-   * @see ./edit.js
-   */
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
-  /**
-   * @see ./save.js
-   */
   save: _save__WEBPACK_IMPORTED_MODULE_3__["default"],
+  deprecated,
   icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
     src: _assets_clickyGroup_svg__WEBPACK_IMPORTED_MODULE_5__["default"],
     alt: "Clicky Group Icon"

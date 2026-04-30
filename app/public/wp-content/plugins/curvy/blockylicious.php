@@ -26,6 +26,23 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @see https://make.wordpress.org/core/2024/10/17/new-block-type-registration-apis-to-improve-performance-in-wordpress-6-7/
  */
 
+function convert_custom_properties($value){
+	$prefix = 'var-';
+	$prefix_len = strlen($prefix);
+	$token_in = '|';
+	$token_out = '--';
+	if(str_starts_with($value, $prefix)){
+		$unwrapped_name = str_replace(
+			$token_in,
+			$token_out,
+			substr($value, $prefix_len)
+		);
+		$value = "var(--wp--$unwrapped_name)";	
+	}
+
+	return value;
+}
+
 function create_custom_block_category( $categories ) {
 	// Adiciona nova categoria de blocos "Blockylicious" no início da lista de categorias.
 	array_unshift(

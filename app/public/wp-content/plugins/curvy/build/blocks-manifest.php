@@ -24,6 +24,13 @@ return array(
 			)
 		),
 		'attributes' => array(
+			'postType' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'linkedPost' => array(
+				'type' => 'number'
+			),
 			'labelText' => array(
 				'type' => 'string',
 				'default' => 'click'
