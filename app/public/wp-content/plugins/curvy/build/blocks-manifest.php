@@ -247,5 +247,49 @@ return array(
 		'style' => 'file:./style-index.css',
 		'viewScript' => 'file:./view.js',
 		'render' => 'file:./render.php'
+	),
+	'piccyGallery' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'blockylicious/piccy-gallery',
+		'version' => '0.1.0',
+		'title' => 'piccyGallery',
+		'category' => 'blockylicious',
+		'icon' => 'images-alt2',
+		'description' => 'Example block for creating a gallery element.',
+		'supports' => array(
+			'html' => false
+		),
+		'textdomain' => 'blockylicious',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'render' => 'file:./render.php'
+	),
+	'piccyImage' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'blockylicious/piccy-image',
+		'version' => '0.1.0',
+		'title' => 'piccyImage',
+		'category' => 'blockylicious',
+		'icon' => 'format-image',
+		'description' => 'Example block for render an image element.',
+		'supports' => array(
+			'html' => false
+		),
+		'attributes' => array(
+			'imageId' => array(
+				'type' => 'number'
+			)
+		),
+		'parent' => array(
+			'blockylicious/piccy-gallery'
+		),
+		'textdomain' => 'blockylicious',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'render' => 'file:./render.php'
 	)
 );

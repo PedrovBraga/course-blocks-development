@@ -1,4 +1,5 @@
 <?php
+namespace DevPedroBraga;
 /**
  * Plugin Name:       blockylicious
  * Description:       Example block of funky blocks.
@@ -15,7 +16,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+	die('silence!'); // Exit if accessed directly.
 }
 /**
  * Registers the block(s) metadata from the `blocks-manifest.php` and registers the block type(s)
@@ -26,37 +27,47 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @see https://make.wordpress.org/core/2024/10/17/new-block-type-registration-apis-to-improve-performance-in-wordpress-6-7/
  */
 
-function convert_custom_properties($value){
-	$prefix = 'var-';
-	$prefix_len = strlen($prefix);
-	$token_in = '|';
-	$token_out = '--';
-	if(str_starts_with($value, $prefix)){
-		$unwrapped_name = str_replace(
-			$token_in,
-			$token_out,
-			substr($value, $prefix_len)
-		);
-		$value = "var(--wp--$unwrapped_name)";	
+final class Blockylicious {
+	static function init(){	
+		add_action('enqueue_block_assets', function(){
+			// $style_url = plugins_url("build/style-index.css", __FILE__);
+			wp_enqueue_style(
+				'dashicons'
+			);
+		});
+		add_action( 'init', function(){
+			add_filter('block_categories_all', function($categories){
+				// Adiciona nova categoria de blocos "Blockylicious" no início da lista de categorias.
+				array_unshift(
+					$categories,
+					[
+						'slug'  => 'blockylicious',
+						'title' => 'Blockylicious',
+					]
+				);
+				return $categories;
+			});
+			wp_register_block_types_from_metadata_collection( __DIR__ . '/build/blocks', __DIR__ . '/build/blocks-manifest.php' );
+		});
 	}
 
-	return value;
+	static function convert_custom_properties($value){
+		$prefix = 'var-';
+		$prefix_len = strlen($prefix);
+		$token_in = '|';
+		$token_out = '--';
+		if(str_starts_with($value, $prefix)){
+			$unwrapped_name = str_replace(
+				$token_in,
+				$token_out,
+				substr($value, $prefix_len)
+			);
+			$value = "var(--wp--$unwrapped_name)";	
+		}
+
+		return $value;
+	}
+
 }
 
-function create_custom_block_category( $categories ) {
-	// Adiciona nova categoria de blocos "Blockylicious" no início da lista de categorias.
-	array_unshift(
-		$categories,
-		[
-			'slug'  => 'blockylicious',
-			'title' => 'Blockylicious',
-		]
-	);
-	return $categories;
-}
-
-function create_block_blockylicious_block_init() {
-	add_filter('block_categories_all', 'create_custom_block_category');
-	wp_register_block_types_from_metadata_collection( __DIR__ . '/build/blocks', __DIR__ . '/build/blocks-manifest.php' );
-}
-add_action( 'init', 'create_block_blockylicious_block_init' );
+Blockylicious::init();
